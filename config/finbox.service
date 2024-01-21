@@ -1,0 +1,25 @@
+# /path/to/systemd/services/finbox.service
+# It's not recommended to modify this file in-place, because it
+# will be overwritten during upgrades.  If you want to customize,
+# the best way is to use the "systemctl edit" command.
+# systemctl enable finbox.service
+# systemctl status finbox.service
+
+[Unit]
+Description=Finbox Server
+After=network.target
+
+[Service]
+User=deploy
+Group=deploy
+Type=simple
+WorkingDirectory=/home/deploy/finbox.mobi
+PIDFile=/run/finbox.pid
+ExecStart=/usr/local/bin/yarn serve
+PrivateTmp=true
+
+Restart=on-failure
+RestartSec=1m
+
+[Install]
+WantedBy=multi-user.target

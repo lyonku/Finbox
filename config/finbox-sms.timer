@@ -1,0 +1,14 @@
+# systemctl enable finbox-sms.timer
+# systemctl status finbox-sms.timer
+# systemctl start finbox-sms.timer
+
+[Unit]
+Description=Finbox Send Sms
+Requires=finbox-sms.service
+
+[Timer]
+Unit=finbox-sms.service
+OnCalendar=*-*-* *:*:00
+
+[Install]
+WantedBy=timers.target

@@ -1,0 +1,23 @@
+# /path/to/systemd/services/finbox-sms.service
+# It's not recommended to modify this file in-place, because it
+# will be overwritten during upgrades.  If you want to customize,
+# the best way is to use the "systemctl edit" command.
+# systemctl enable finbox-sms.service
+# systemctl status finbox-sms.service
+# systemctl start finbox-sms.service
+
+[Unit]
+Description=Finbox Send Sms
+After=network.target
+
+[Service]
+User=deploy
+Group=deploy
+Type=oneshot
+WorkingDirectory=/home/deploy/finbox.mobi
+PIDFile=/run/finbox-sms.pid
+ExecStart=/usr/local/bin/yarn sms
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

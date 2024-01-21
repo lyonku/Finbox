@@ -1,0 +1,25 @@
+# /path/to/systemd/services/finbox-short.service
+# It's not recommended to modify this file in-place, because it
+# will be overwritten during upgrades.  If you want to customize,
+# the best way is to use the "systemctl edit" command.
+# systemctl enable finbox-short.service
+# systemctl status finbox-short.service
+
+[Unit]
+Description=Finbox Shortener Server
+After=network.target
+
+[Service]
+User=deploy
+Group=deploy
+Type=simple
+WorkingDirectory=/home/deploy/finbox.mobi
+PIDFile=/run/finbox-short.pid
+ExecStart=/usr/local/bin/yarn short
+PrivateTmp=true
+
+Restart=on-failure
+RestartSec=1m
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./assets/css/reset.css" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <link
+      rel="icon"
+      href="./assets/images/FinboxLogo.svg"
+      type="image/x-icon"
+    />
+    <title>Finbox.mobi</title>
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript" >
+      (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        var z = null;m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+      (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+      ym(90202415, "init", {
+        clickmap:true,
+        trackLinks:true,
+        accurateTrackBounce:true
+      });
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/90202415" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QPL9ZHL2KN"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-QPL9ZHL2KN');
+    </script>
+    <script type="text/javascript" >
+      (() => {
+        function getCookie(name) {
+          let matches = document.cookie.match(new RegExp(
+            "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+          ));
+          return matches ? decodeURIComponent(matches[1]) : undefined;
+        }
+
+        function setCookie(name, value, options = {}) {
+          options = {
+            path: '/',
+            // при необходимости добавьте другие значения по умолчанию
+            ...options
+          };
+
+          if (options.expires instanceof Date) {
+            options.expires = options.expires.toUTCString();
+          }
+
+          let updatedCookie = encodeURIComponent(name) + "=" + encodeURIComponent(value);
+
+          for (let optionKey in options) {
+            updatedCookie += "; " + optionKey;
+            let optionValue = options[optionKey];
+            if (optionValue !== true) {
+              updatedCookie += "=" + optionValue;
+            }
+          }
+
+          document.cookie = updatedCookie;
+        }
+        function generateId(length) {
+          var result           = '';
+          var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+          var charactersLength = characters.length;
+          for ( var i = 0; i < length; i++ ) {
+            result += characters.charAt(Math.floor(Math.random() *
+              charactersLength));
+          }
+          return result;
+        }
+
+        const storage = window.localStorage;
+        if (storage.getItem("fbpix") && storage.getItem('redirectToDetails') === 'yes') {
+          const qs = new URLSearchParams();
+          qs.append("buyer", storage.getItem("buyer"));
+          qs.append("fbpix", storage.getItem("fbpix"));
+          let userId = storage.getItem("userId") || getCookie('userId');
+          if (!userId) {
+            userId = generateId(12);
+            window.localStorage.setItem('userId', userId);
+            const expires = new Date();
+            expires.setDate(expires.getDate() + 365);
+            setCookie('userId', id, { expires: expires });
+          }
+          qs.append("userId", userId);
+
+          window.location = '/details?' + qs.toString()
+        }
+      })();
+    </script>
+    <script charset="UTF-8" src="https://web.webpushs.com/js/push/e393589dc8b70a0776c14f07de781034_1.js" async></script>
+  </head>
+  <body>
+    <header class="header">
+      <div class="wrapper">
+        <div class="header__wrapper">
+          <div class="header__logo">
+            <a href="javascript:return false;" class="header__logo-link">
+              <img
+                src="./assets/images/FinboxLogo.svg"
+                alt="FinboxLogo"
+                class="logo"
+              />
+            </a>
+            <div class="header__title">Finbox.email</div>
+          </div>
+          <div class="header__nav-btn" id="header__nav-btn">
+            <img
+              src="./assets/images/adaptive-menu-btn-open.svg"
+              alt="menu open"
+              onclick="openMenu()"
+            />
+          </div>
+          <nav class="header__nav">
+            <ul class="header__list">
+              <li class="header__item">
+                <a href="" class="header__link">О нас</a>
+              </li>
+              <li class="header__item">
+                <a href="" class="header__link">Как это работает?</a>
+              </li>
+              <li class="header__item">
+                <a href="" class="header__link">Контакты</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+    <main class="main">
+      <section class="section-1 intro">
+        <div class="wrapper">
+          <div class="intro__wrapper">
+            <div class="intro__container-title">
+              <div class="intro__title">Онлайн микрокредиты под 0,01%</div>
+              <div class="intro__subtitle">
+                Выберите лучшее предложение среди сотен кредиторов всего за 4
+                минуты бесплатно
+              </div>
+            </div>
+
+            <div class="intro__container-form">
+              <div class="intro__title">Сумма кредита</div>
+              <div class="intro__price" id="intro__price">
+                <input
+                  type="text"
+                  maxlength="50"
+                  value="50000"
+                  class="intro__price-text"
+                  id="intro__price-text-input"
+                />
+                <span class="intro__price-text" id="intro__price-text-span"
+                  >50 000
+                </span>
+                <img
+                  src="./assets/images/edit.svg"
+                  alt="edit_price"
+                  class="intro__price-logo"
+                  onclick="changePrice()"
+                />
+              </div>
+              <div class="intro__slidecontainer">
+                <input
+                  type="range"
+                  min="5000"
+                  max="250000"
+                  step="1000"
+                  value="50000"
+                  class="slider slider-progress"
+                  id="myRange"
+                  oninput="rangePrice()"
+                  onchange="changeInput()"
+                />
+              </div>
+              <div class="intro__price-range">
+                <span class="price__range-item">3 000 ₸</span>
+                <span class="price__range-item">250 000 ₸</span>
+              </div>
+              <div class="intro__button">
+                <form action="./form.html">
+                  <input
+                    type="submit"
+                    value="Получить предложения"
+                    onclick="buttonClick()"
+                  />
+                </form>
+              </div>
+              <div class="intro__desc">
+                <img
+                  src="./assets/images/intro-desc-logo.svg"
+                  alt="warning"
+                  class="intro__desc-logo"
+                />
+                <div class="intro__desc-text">
+                  Наш сервис мониторит базу проверенных кредиторов в реальном
+                  времени
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="section-2">
+        <div class="wrapper">
+          <div class="section-2__wrapper">
+            <div class="section-2-item">
+              <img src="./assets/images/icon_1.svg" alt="" />
+              <div class="item__text">
+                От 5 000 до 153 000 <br />
+                тенге под 0,01%
+              </div>
+            </div>
+            <div class="section-2-item">
+              <img src="./assets/images/Receipt Favourite.svg" alt="" />
+              <div class="item__text">
+                С любой кредитной <br />
+                историей
+              </div>
+            </div>
+            <div class="section-2-item">
+              <img src="./assets/images/icon_3.svg" alt="" />
+              <div class="item__text">
+                Никакой комиссии <br />
+                сервиса
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="section-3">
+        <div class="wrapper">
+          <div class="section-3__wrapper">
+            <div class="section-3-title">
+              Вы уже в 3 шагах от одобрения онлайн микрокредита
+            </div>
+            <div class="section-3__container">
+              <div class="section-3__steps__imgs">
+                <img src="./assets/images/1_step.svg" alt="1-step" />
+                <div class="section-3__steps-line"></div>
+                <img src="./assets/images/2_step.svg" alt="2-step" />
+                <div class="section-3__steps-line section-3__steps-line2"></div>
+                <img src="./assets/images/3_step.svg" alt="3-step" />
+              </div>
+              <div class="section-3__steps">
+                <div class="section-3__steps-item">
+                  <div class="section-3__steps-title">
+                    Заполните форму <br />
+                    на сайте
+                  </div>
+                  <div class="section-3__steps-text">
+                    Достаточно удостоверения личности и действующей банковской
+                    карты
+                  </div>
+                </div>
+                <div class="section-3__steps-item">
+                  <div class="section-3__steps-title">
+                    Получите лучшие <br />
+                    предложения на рынке
+                  </div>
+                  <div class="section-3__steps-text">
+                    Наш сервис выберет тех кредиторов, кто предложит самые
+                    выгодные условия и уже готов одобрить вашу заявку
+                  </div>
+                </div>
+                <div class="section-3__steps-item">
+                  <div class="section-3__steps-title">
+                    Заберите свои <br />
+                    деньги
+                  </div>
+                  <div class="section-3__steps-text">
+                    Получите кредит на карту, банковский счёт или <br />
+                    наличными всего за <br />
+                    несколько минут
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="section-4">
+        <div class="wrapper">
+          <div class="section-4__wrapper">
+            <div class="section-4__reasons-title">
+              <div class="section-4__reasons-heading">
+                5 причин, почему выбирают нас
+              </div>
+              <div class="section-4__reasons-text">
+                Сервис Finbox изучает предложения лишь среди тех компаний,
+                которые отвечают 4 критериям:
+                <span
+                  >отсутствие скрытых платежей, проверенная репутация, выдача
+                  кредитов онлайн и защита персональных данных.
+                </span>
+                И о результатах нашего подхода лучше слов расскажут цифры:
+              </div>
+            </div>
+            <div class="section-4__reasons">
+              <div class="section-4__item">
+                <img src="./assets/images/reason-1.svg" alt="reason-1" />
+                <div class="reason-heading">
+                  <div class="reason-title">760 253</div>
+                  <div class="reason-text">кредитов выдано</div>
+                </div>
+              </div>
+              <div class="section-4__item">
+                <img src="./assets/images/reason-2.svg" alt="reason-2" />
+                <div class="reason-heading">
+                  <div class="reason-title">1227</div>
+                  <div class="reason-text">
+                    микрокредитов обработано сегодня
+                  </div>
+                </div>
+              </div>
+              <div class="section-4__item">
+                <img src="./assets/images/reason-3.svg" alt="reason-3" />
+                <div class="reason-heading">
+                  <div class="reason-title">10 минут</div>
+                  <div class="reason-text">
+                    среднее время выдачи микрокредита
+                  </div>
+                </div>
+              </div>
+              <div class="section-4__item">
+                <img src="./assets/images/reason-4.svg" alt="reason-4" />
+                <div class="reason-heading">
+                  <div class="reason-title">86%</div>
+                  <div class="reason-text">
+                    клиентов возвращаются к нам снова
+                  </div>
+                </div>
+              </div>
+              <div class="section-4__item">
+                <img src="./assets/images/reason-5.svg" alt="reason-5" />
+                <div class="reason-heading">
+                  <div class="reason-title">94%</div>
+                  <div class="reason-text">одобренных заявок</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="section-5">
+        <div class="wrapper">
+          <div class="section-5__wrapper">
+            <div class="section-5__title">
+              Не нужно <br />
+              заполнять формы <br />
+              на бесчисленных сайтах
+            </div>
+            <div class="section-5__text">
+              С нашим сервисом вы за несколько минут найдёте десятки кредиторов,
+              которые одобрят вам интернет-заём с любой кредитной историей
+            </div>
+            <div class="section-5__btn">
+              <form action="./form.html">
+                <input type="submit" value="Получить деньги" />
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="section-6">
+        <div class="wrapper">
+          <div class="section-6__wrapper">
+            <div class="section-6__title">
+              <div class="section-6__heading">
+                Finbox — нам доверяют, потому что..
+              </div>
+              <div class="section-6__text">
+                Я уже пробовала другие сайты по подбору онлайн микрокредов, но
+                все они просили ввести данные кредитной карты и потом списывали
+                деньги каждые 5 дней. В Финбокс не только подобрали микрокредит
+                под 0,01%, но и сделали это бесплатно! На все ушло не больше 4
+                минут!
+              </div>
+              <div class="section-6__slogan">
+                Гүльмира<span>, Шымкент</span>
+              </div>
+            </div>
+            <div class="section-6__img">
+              <img src="./assets/images/section-6-background.png" alt="" />
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="section-7">
+        <div class="wrapper">
+          <div class="section-7__wrapper">
+            <div class="section-7__title">
+              Готовы получить деньги прямо сейчас?
+            </div>
+            <div class="section-7__text">
+              Заполните онлайн-форму и получите деньги всего <br />за 4 минуты
+            </div>
+            <div class="section-7__btn">
+              <form action="./form.html">
+                <input type="submit" value="Получить деньги" />
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="section-8 collapse">
+        <div class="wrapper">
+          <div class="collapse__wrapper">
+            <div class="collapse__heading">Остались вопросы?</div>
+            <div class="collapse__text">
+              Мы собрали самые популярные вопросы и подготовили на них краткие
+              ответы на самые популярные вопросы, чтобы сэкономить ваше время
+            </div>
+            <div class="collapse__item" id="collapse__item-1">
+              <div class="collapse__item-title">
+                <div class="item__heading">Как работает ваш сервис?</div>
+                <img
+                  class="item__img"
+                  src="./assets/images/section-8-item-btn.svg"
+                  alt="+"
+                />
+              </div>
+              <div class="collapse__item-text">
+                «Поможем получить кредит, оформить карту или начать
+                инвестировать. Поможем получить кредит, оформить карту
+                или начать инвестировать»
+              </div>
+            </div>
+            <div class="collapse__item" id="collapse__item-2">
+              <div class="collapse__item-title">
+                <div class="item__heading">
+                  Сколько стоит персональный подбор?
+                </div>
+                <img
+                  class="item__img"
+                  src="./assets/images/section-8-item-btn.svg"
+                  alt="+"
+                />
+              </div>
+              <div class="collapse__item-text">
+                В отличие от большинства сервисов – мы не берём плату за
+                пользование нашим проектом. Весь функционал доступен вам
+                совершенно бесплатно.
+              </div>
+            </div>
+            <div class="collapse__item" id="collapse__item-3">
+              <div class="collapse__item-title">
+                <div class="item__heading">Гарантируете ли вы анонимность?</div>
+                <img
+                  class="item__img"
+                  src="./assets/images/section-8-item-btn.svg"
+                  alt="+"
+                />
+              </div>
+              <div class="collapse__item-text">
+                Конечно! Вашу личную информацию мы используем лишь для
+                персонального поиска и сопоставления её с требованиями кредитных
+                партнёров.
+              </div>
+            </div>
+            <div class="collapse__item" id="collapse__item-4">
+              <div class="collapse__item-title">
+                <div class="item__heading">
+                  Можно ли оформить онлайн-кредит в Казахстане с плохой
+                  кредитной историей?
+                </div>
+                <img
+                  class="item__img"
+                  src="./assets/images/section-8-item-btn.svg"
+                  alt="+"
+                />
+              </div>
+              <div class="collapse__item-text">
+                Получить микрокредит с плохой историей в МФО можно, в отличие от
+                банка, но со сложностями придется столкнуться. Чтобы увеличить
+                шанс одобрения кредита, подавать онлайн-заявку на кредит нужно
+                одновременно в несколько микрофинансовых организаций. Если
+                требуется крупная сумма, ее лучше разбить на несколько мелких
+                сумм, и указывать небольшой срок. В этом случае более высокая
+                вероятность, что заявку одобрит одна или несколько МФО.
+                Необходимо быть готовым к тому, что при плохой кредитной истории
+                (КИ) сумма онлайн-микрокредита будет минимальная, на короткий
+                срок и под повышенный процент. Однако, возвратив долг в срок, вы
+                улучшите свою КИ, в будущем сможете рассчитывать на более
+                лояльные условия — большую сумму, пониженную процентную ставку и
+                более длительный срок кредитования.
+              </div>
+            </div>
+            <div class="collapse__item" id="collapse__item-5">
+              <div class="collapse__item-title">
+                <div class="item__heading">
+                  На какие условия кредитования я могу рассчитывать?
+                </div>
+                <img
+                  class="item__img"
+                  src="./assets/images/section-8-item-btn.svg"
+                  alt="+"
+                />
+              </div>
+              <div class="collapse__item-text">
+                Сумма и процентная ставка назначаются самим заёмщиком. Наш
+                проект позволяет вам выбрать оптимальные условия из десятков и
+                даже сотен предложений. Вы сами определяете условия, которые вас
+                устроят.
+              </div>
+            </div>
+            <div class="collapse__item" id="collapse__item-6">
+              <div class="collapse__item-title">
+                <div class="item__heading">
+                  Какие есть требования к заёмщику?
+                </div>
+                <img
+                  class="item__img"
+                  src="./assets/images/section-8-item-btn.svg"
+                  alt="+"
+                />
+              </div>
+              <div class="collapse__item-text">
+                Для работы с нашим сайтом нужно указать контактный номер
+                телефона и электронную почту, уточнить условия и цель онлайн
+                кредита. Также нам понадобится ваше имя и фамилия, а для работы
+                с сервисом вы должны быть старше 18 и моложе 70 лет.
+              </div>
+            </div>
+            <div class="collapse__item" id="collapse__item-7">
+              <div class="collapse__item-title">
+                <div class="item__heading">Как не получить отказ?</div>
+                <img
+                  class="item__img"
+                  src="./assets/images/section-8-item-btn.svg"
+                  alt="+"
+                />
+              </div>
+              <div class="collapse__item-text">
+                Чтобы с высокой долей вероятности получить онлайн-кредит,
+                воспользуйтесь следующими рекомендациями: Правильно оформляйте
+                заявку. Обращайте внимание на ошибки, иначе электронные системы
+                кредитных учреждений ее просто заблокируют. При заполнении полей
+                указывайте о себе только достоверную информацию. Подайте заявки
+                сразу в несколько МФО. Так повышается вероятность положительного
+                ответа. Особенно это важно при плохой кредитной истории или
+                наличии непогашенных долгов. Отправляйте запросы в те МФО,
+                требованиям которых вы полностью соответствуете.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="section-9">
+        <div class="wrapper">
+          <div class="section-9__wrapper">
+            <div class="section-9__title">
+              Готовы найти лучший онлайн микрокредит прямо сейчас?
+            </div>
+            <div class="section-9__text">
+              Заполните онлайн-форму и получите деньги всего за 4 минуты
+            </div>
+            <div class="section-9__btn">
+              <form action="./form.html">
+                <input type="submit" value="Получить деньги" />
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="section-10">
+        <div class="wrapper">
+          <div class="section-10__wrapper">
+            <a href="#"
+              ><div class="section-10__item">
+                Кредит без подтверждения дохода
+              </div></a
+            >
+            <a href="#"
+              ><div class="section-10__item">Кредит без отказа</div></a
+            >
+            <a href="#"><div class="section-10__item">Кредит на карту</div></a>
+            <a href="#"
+              ><div class="section-10__item">
+                Кредит с просрочками и плохой кредитной историей
+              </div></a
+            >
+            <a href="#"><div class="section-10__item">Микрокредит</div></a>
+            <a href="#"
+              ><div class="section-10__item">Деньги до зарплаты</div></a
+            >
+            <a href="#"
+              ><div class="section-10__item">Кредит без залога</div></a
+            >
+            <a href="#"
+              ><div class="section-10__item">Кредит для безработных</div></a
+            >
+            <a href="#"
+              ><div class="section-10__item">
+                Кредит без проверки кредитной истории
+              </div></a
+            >
+            <a href="#"><div class="section-10__item">Экспресс кредит</div></a>
+            <a href="#"
+              ><div class="section-10__item">Микрокредит для студентов</div></a
+            >
+            <a href="#"><div class="section-10__item">Деньги в долг</div></a>
+            <a href="#"
+              ><div class="section-10__item">Микрокредит без процентов</div></a
+            >
+            <a href="#"
+              ><div class="section-10__item">Кредит пенсионерам</div></a
+            >
+            <a href="#"
+              ><div class="section-10__item">Кредит за 15 минут</div></a
+            >
+            <a href="#"
+              ><div class="section-10__item">Микрокредит круглосуточно</div></a
+            >
+            <a href="#"
+              ><div class="section-10__item">Кредит за 5 минут</div></a
+            >
+            <a href="#"
+              ><div class="section-10__item">Кредит без звонков</div></a
+            >
+            <a href="#"><div class="section-10__item">Быстрый кредит</div></a>
+            <a href="#"><div class="section-10__item">Кредит инвалидам</div></a>
+            <a href="#"
+              ><div class="section-10__item">Микрокредит с 18 лет</div></a
+            >
+            <a href="#"
+              ><div class="section-10__item">Кредит под низкий процент</div></a
+            >
+            <a href="#"
+              ><div class="section-10__item">Кредит без пенсионки</div></a
+            >
+            <a href="#"
+              ><div class="section-10__item">Кредит на лечение</div></a
+            >
+            <a href="#"
+              ><div class="section-10__item">Микрокредит на 1 месяц</div></a
+            >
+            <a href="#"><div class="section-10__item">Кредит наличными</div></a>
+            <a href="#"
+              ><div class="section-10__item">Рефинансирование кредита</div></a
+            >
+            <a href="#"
+              ><div class="section-10__item">Кредит на Казпочту</div></a
+            >
+            <a href="#"
+              ><div class="section-10__item">Кредит на Казпочту</div></a
+            >
+            <a href="#"
+              ><div class="section-10__item">Кредит на 200 тыс тенге</div></a
+            >
+            <a href="#"
+              ><div class="section-10__item">Кредит на банковский счет</div></a
+            >
+            <a href="#"
+              ><div class="section-10__item">Микрокредит без паспорта</div></a
+            >
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">
+      <div class="wrapper">
+        <div class="footer__wrapper">
+          <div class="footer__nav">
+            <ul class="footer__list">
+              <li class="footer__list-item"><a href="#">О нас</a></li>
+              <li class="footer__list-item">
+                <a href="#">Как это работает?</a>
+              </li>
+              <li class="footer__list-item"><a href="#">Отписаться</a></li>
+              <li class="footer__list-item">
+                <a href="#">Партнёрская программа</a>
+              </li>
+              <li class="footer__list-item">
+                <a href="/soglasie.docx">Согласие</a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="footer__text">
+            <p>
+              Финбокс подбирает микрокредиты на любые цели. 24 часа в сутки, 7
+              дней в неделю. Минимальный период погашения долга 3 месяца,
+              максимальный — 12 месяцев. Максимальная годовая процентная ставка
+              (APR) — 36%. Процентные ставки варьируются от кредитора к
+              кредитору, предложенная процентная ставка будет зависеть от ваших
+              обстоятельств и кредитной истории. <br />
+              <br />
+            </p>
+            <p>
+              Данный сайт не является финансовым учреждением, банком или
+              кредитором. Сервис не несет ответственности за какие-либо
+              кредитные соглашения. Данный сайт не взимает плату за
+              обслуживание, а также не несет ответственности за действия,
+              бездействие или процентные ставки любого кредитора. Вы не обязаны
+              использовать услуги Finbox, вступать в контакт или запрашивать
+              кредит у кредиторов, представленных на данном сайте.
+              <br />
+              <br />
+            </p>
+            <p>
+              Наш информационный сервис подбирает лучшие предложения от
+              кредитных организаций в Казахстане. Среди них — оформление
+              кредитов онлайн под нулевой процент. <br />
+              <br />
+            </p>
+            <p>
+              Как правило, такие льготы предоставляются клиентам, которые решают
+              взять микрокредит впервые. <br />
+              <br />
+            </p>
+            <p>
+              Финбокс обращает Ваше внимание на то, что размещенные на сайте
+              материалы, а также направляемые пользователю предложения, носят
+              исключительно информационный характер и не являются офертой,
+              предложением или рекомендацией совершать какие-либо сделки с
+              указанными финансовыми организациями. <br />
+              <br />
+            </p>
+            <p>
+              Являясь сервисом по сбору и публикации сведений относительно
+              условий выдачи микрокредитов в организациях, которые предоставляют
+              микрокредиты на территории Республики Казахстан, Финбокс не
+              осуществляет функции посредника между заемщиком и займодателем при
+              выдаче микрокредитов и не занимается их оформлением и выдачей.
+              <br />
+              <br />
+            </p>
+            <p>
+              Финбокс не может нести и не несет ответственности за достоверность
+              и объективность предлагаемых поставщиками финансовых услуг
+              сведений, включая размер вознаграждения, срок кредитования и т.д.
+              Такие сведения подлежат уточнению самим пользователем у выбранного
+              им поставщика услуг. <br />
+              <br />
+            </p>
+            <p>
+              Предоставляемые пользователю предложения, не являются рекламой
+              финансовых услуг и носят справочно-информационный характер
+              <br />
+              <br />
+            </p>
+          </div>
+
+          <div class="footer_copyright">© 2022 Finbox.email</div>
+        </div>
+      </div>
+    </footer>
+    <script src="https://unpkg.com/imask"></script>
+    <script src="./js/range-input.js"></script>
+    <script src="./js/script.js?2"></script>
+  </body>
+</html>

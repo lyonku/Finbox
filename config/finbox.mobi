@@ -1,0 +1,29 @@
+server {
+    server_name finbox.mobi;
+
+
+    return 302 https://finbox.email$request_uri;
+    
+    error_log  /var/log/nginx/finbox.mobi-error.log;
+    access_log /var/log/nginx/finbox.mobi-access.log;
+
+
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/finbox.mobi/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/finbox.mobi/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+}
+server {
+    if ($host = finbox.mobi) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+
+    server_name finbox.mobi;
+    listen 80;
+    return 404; # managed by Certbot
+
+
+}

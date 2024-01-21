@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./assets/css/reset.css" />
+    <link rel="stylesheet" href="./assets/css/details-style.css?1" />
+    <link
+      rel="icon"
+      href="./assets/images/FinboxLogo.svg"
+      type="image/x-icon"
+    />
+    <title>Finbox.email</title>
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript" >
+      (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        var z = null;m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+      (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+      ym(90202415, "init", {
+        clickmap:true,
+        trackLinks:true,
+        accurateTrackBounce:true
+      });
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/90202415" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QPL9ZHL2KN"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-QPL9ZHL2KN');
+    </script>
+    <script charset="UTF-8" src="https://web.webpushs.com/js/push/e393589dc8b70a0776c14f07de781034_1.js" async></script>
+  </head>
+  <body>
+    <header class="header">
+      <div class="wrapper">
+        <div class="header__wrapper">
+          <div class="header__logo">
+            <a href="javascript: return false;" class="header__logo-link">
+              <img
+                src="./assets/images/FinboxLogo.svg"
+                alt="FinboxLogo"
+                class="logo"
+              />
+            </a>
+            <div class="header__title">Finbox.email</div>
+          </div>
+          <div class="header__nav-btn" id="header__nav-btn">
+            <img
+              src="./assets/images/adaptive-menu-btn-open.svg"
+              alt="menu open"
+              onclick="openMenu()"
+            />
+          </div>
+          <nav class="header__nav">
+            <ul class="header__list">
+              <li class="header__item">
+                <a href="" class="header__link">О нас</a>
+              </li>
+              <li class="header__item">
+                <a href="" class="header__link">Как это работает?</a>
+              </li>
+              <li class="header__item">
+                <a href="" class="header__link">Контакты</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+    <main class="main">
+      <section class="intro">
+        <div class="wrapper">
+          <div class="intro__wrapper">
+            <div class="intro__container">
+              <div class="intro-title">
+                <%if (profile) {%>
+                  <%= profile.name %>, анкета прошла проверку, <br />
+                  получите деньги
+                <% } else { %>
+                  Анкета прошла проверку, <br />
+                  получите деньги
+                <% } %>
+              </div>
+              <a href="<%= targetUrl %>" target="_blank" class="js-offer-link"
+                ><input type="button" value="Получить деньги" class="intro-btn"
+              /></a>
+              <div class="intro-subtitle">
+                или выберите одно из предложений ниже и нажмите <br />
+                на кнопку “Получить деньги”
+              </div>
+            </div>
+            <img
+              src="./assets/images/details-intro.png"
+              alt=""
+              class="intro-img"
+            />
+          </div>
+        </div>
+      </section>
+      <div class="section-2">
+        <div class="wrapper">
+          <div class="section-2__wrapper">
+            <%for (let offer of mainOffers) { %>
+            <div class="section-2__item">
+              <img src="<%= offer.image %>" alt="" class="item-img" />
+              <div class="item-separator"></div>
+              <div class="item-prices">
+                <div class="item-sum">
+                  <div class="title">Сумма кредита</div>
+                  <div class="price"><%= formatNumber(approvedLoan) %> ₸</div>
+                </div>
+                <div class="item-overpayment">
+                  <div class="title">Переплата</div>
+                  <div class="price"><%= formatNumber(approvedLoan * 0.001) %> ₸</div>
+                </div>
+                <div class="item-total">
+                  <div class="title">Отдадите</div>
+                  <div class="price"><%= formatNumber(approvedLoan * 0.001 + approvedLoan) %> ₸</div>
+                </div>
+                <div class="desc">Ставка от 0,01% (ГЭСВ - от 1,076%)</div>
+              </div>
+              <a href="" class="item-link">Подробнее</a>
+              <div class="item-btn">
+                <a href="<%= offer.url %>" target="_blank" class="js-offer-link"
+                  ><input type="button" value="Получить деньги"
+                /></a>
+                <div class="text">Вероятность одобрения <%= offer.approvingChance%>%</div>
+              </div>
+            </div>
+            <%}-%>
+
+            <div class="section-2__title">Все предложения</div>
+
+            <%for (let offer of restOffers) { %>
+            <div class="section-2__item fourth-item">
+              <img src="<%= offer.image %>" alt="" class="item-img" />
+              <div class="item-separator"></div>
+              <div class="item-prices">
+                <div class="item-sum">
+                  <div class="title">Сумма кредита</div>
+                  <div class="price"><%= formatNumber(approvedLoan) %> ₸</div>
+                </div>
+                <div class="item-overpayment">
+                  <div class="title">Переплата</div>
+                  <div class="price"><%= formatNumber(approvedLoan * 0.002) %> ₸</div>
+                </div>
+                <div class="item-total">
+                  <div class="title">Отдадите</div>
+                  <div class="price"><%= formatNumber(approvedLoan * 0.002 + approvedLoan) %> ₸</div>
+                </div>
+                <div class="desc">Ставка от 0,01% (ГЭСВ - от 1,076%)</div>
+              </div>
+              <a href="" class="item-link">Подробнее</a>
+              <div class="item-btn">
+                <a href="<%= offer.url %>" target="_blank" class="js-offer-link"
+                  ><input type="button" value="Получить деньги"
+                /></a>
+                <div class="text">Вероятность одобрения <%= offer.approvingChance%>%</div>
+              </div>
+            </div>
+            <%}-%>
+          </div>
+        </div>
+      </div>
+      <section class="section-3">
+        <div class="wrapper">
+          <div class="section-3__wrapper">
+            <div class="section-3__title">Вам может быть полезно</div>
+            <div class="section-3__items">
+              <a href="#"
+                ><div class="section-3__item">
+                  TurboMoney – микрозайм онлайн для всех
+                </div></a
+              >
+              <a href="#"
+                ><div class="section-3__item">
+                  Tengo – быстрый займ без проблем
+                </div></a
+              >
+              <a href="#"
+                ><div class="section-3__item">
+                  Kokе – легкий способ взять займ на карту
+                </div></a
+              >
+              <a href="#"
+                ><div class="section-3__item">
+                  Как получить микрозайм на кредитную карту?
+                </div></a
+              >
+              <a href="#"
+                ><div class="section-3__item">
+                  Брать ли микрозайм, если не дают кредит в банке?
+                </div></a
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">
+      <div class="wrapper">
+        <div class="footer__wrapper">
+          <div class="footer__nav">
+            <ul class="footer__list">
+              <li class="footer__list-item"><a href="#">О нас</a></li>
+              <li class="footer__list-item">
+                <a href="#">Как это работает?</a>
+              </li>
+              <li class="footer__list-item"><a href="#">Отписаться</a></li>
+              <li class="footer__list-item">
+                <a href="#">Партнёрская программа</a>
+              </li>
+              <li class="footer__list-item">
+                <a href="/soglasie.docx">Согласие</a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="footer__text">
+            <p>
+              Финбокс подбирает микрокредиты на любые цели. 24 часа в сутки, 7
+              дней в неделю. Минимальный период погашения долга 3 месяца,
+              максимальный — 12 месяцев. Максимальная годовая процентная ставка
+              (APR) — 36%. Процентные ставки варьируются от кредитора к
+              кредитору, предложенная процентная ставка будет зависеть от ваших
+              обстоятельств и кредитной истории. <br />
+              <br />
+            </p>
+            <p>
+              Данный сайт не является финансовым учреждением, банком или
+              кредитором. Сервис не несет ответственности за какие-либо
+              кредитные соглашения. Данный сайт не взимает плату за
+              обслуживание, а также не несет ответственности за действия,
+              бездействие или процентные ставки любого кредитора. Вы не обязаны
+              использовать услуги Finbox, вступать в контакт или запрашивать
+              кредит у кредиторов, представленных на данном сайте.
+              <br />
+              <br />
+            </p>
+            <p>
+              Наш информационный сервис подбирает лучшие предложения от
+              кредитных организаций в Казахстане. Среди них — оформление
+              кредитов онлайн под нулевой процент. <br />
+              <br />
+            </p>
+            <p>
+              Как правило, такие льготы предоставляются клиентам, которые решают
+              взять микрокредит впервые. <br />
+              <br />
+            </p>
+            <p>
+              Финбокс обращает Ваше внимание на то, что размещенные на сайте
+              материалы, а также направляемые пользователю предложения, носят
+              исключительно информационный характер и не являются офертой,
+              предложением или рекомендацией совершать какие-либо сделки с
+              указанными финансовыми организациями. <br />
+              <br />
+            </p>
+            <p>
+              Являясь сервисом по сбору и публикации сведений относительно
+              условий выдачи микрокредитов в организациях, которые предоставляют
+              микрокредиты на территории Республики Казахстан, Финбокс не
+              осуществляет функции посредника между заемщиком и займодателем при
+              выдаче микрокредитов и не занимается их оформлением и выдачей.
+              <br />
+              <br />
+            </p>
+            <p>
+              Финбокс не может нести и не несет ответственности за достоверность
+              и объективность предлагаемых поставщиками финансовых услуг
+              сведений, включая размер вознаграждения, срок кредитования и т.д.
+              Такие сведения подлежат уточнению самим пользователем у выбранного
+              им поставщика услуг. <br />
+              <br />
+            </p>
+            <p>
+              Предоставляемые пользователю предложения, не являются рекламой
+              финансовых услуг и носят справочно-информационный характер
+              <br />
+              <br />
+            </p>
+          </div>
+
+          <div class="footer_copyright">© 2022 Finbox.email</div>
+        </div>
+      </div>
+    </footer>
+    <script src="./js/details-script.js?2"></script>
+  </body>
+</html>
